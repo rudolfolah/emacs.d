@@ -27,6 +27,9 @@ In particular, there's a nice config for *tab autocompletion*, and
 `flycheck` is used to immediately highlight syntax errors in Ruby, HAML,
 Python, Javascript, PHP and a number of other languages.
 
+Includes [projectile](https://github.com/bbatsov/projectile) for easy
+project navigation using find-file.
+
 ## Supported Emacs versions
 
 The config should run on Emacs 23.3 or greater and is designed to
