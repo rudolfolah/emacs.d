@@ -28,7 +28,9 @@ In particular, there's a nice config for *tab autocompletion*, and
 Python, Javascript, PHP and a number of other languages.
 
 Includes [projectile](https://github.com/bbatsov/projectile) for easy
-project navigation using find-file.
+project navigation using find-file. It is enabled *globally*. Check
+projectile's [Basic Setup section in the README](https://github.com/bbatsov/projectile#basic-setup)
+to enable it for select modes.
 
 ## Supported Emacs versions
 
