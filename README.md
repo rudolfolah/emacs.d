@@ -32,6 +32,8 @@ project navigation using find-file. It is enabled *globally*. Check
 projectile's [Basic Setup section in the README](https://github.com/bbatsov/projectile#basic-setup)
 to enable it for select modes.
 
+**Check [init-local.el](lisp/init-local.el) for additional local settings!**
+
 ## Supported Emacs versions
 
 The config should run on Emacs 23.3 or greater and is designed to
