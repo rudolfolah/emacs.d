@@ -34,6 +34,14 @@ to enable it for select modes.
 
 **Check [init-local.el](lisp/init-local.el) for additional local settings!**
 
+Init-local is right now loading these things:
+* monokai-theme
+* yasnippet
+* web-mode
+
+In the future those should probably go into the appropriate init-*.el
+files.
+
 ## Supported Emacs versions
 
 The config should run on Emacs 23.3 or greater and is designed to
