@@ -19,6 +19,9 @@
  web-mode-enable-auto-opening t
  web-mode-enable-auto-closing t)
 
+;; turn off undo tree, the redo mode functions in a very strange way.
+(global-undo-tree-mode -1)
+
 
 (provide 'init-local)
 ;;; init-local.el ends here
