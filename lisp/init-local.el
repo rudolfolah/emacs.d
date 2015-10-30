@@ -12,6 +12,13 @@
 
 (require-package 'web-mode)
 (require 'web-mode)
+(setq
+ web-mode-markup-indent-offset 2
+ web-mode-enable-auto-quoting nil
+ web-mode-enable-auto-pairing nil
+ web-mode-enable-auto-opening t
+ web-mode-enable-auto-closing t)
+
 
 (provide 'init-local)
 ;;; init-local.el ends here
