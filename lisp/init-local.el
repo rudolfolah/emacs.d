@@ -31,6 +31,13 @@
 ;; turn off the lambda symbol
 (global-prettify-symbols-mode -1)
 
+;; a useful function taken from: http://emacs.stackexchange.com/a/5576/10000
+(defun global-disable-mode (mode-fn)
+  "Disable `MODE-FN' in ALL buffers."
+  (interactive "a")
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      (funcall mode-fn -1))))
 
 (provide 'init-local)
 ;;; init-local.el ends here
