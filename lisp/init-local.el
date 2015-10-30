@@ -39,5 +39,7 @@
     (with-current-buffer buffer
       (funcall mode-fn -1))))
 
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
+
 (provide 'init-local)
 ;;; init-local.el ends here
