@@ -28,6 +28,9 @@
 ;; turn off the paredit mode, really annoying
 (paredit-mode -1)
 
+;; turn off the lambda symbol
+(global-prettify-symbols-mode -1)
+
 
 (provide 'init-local)
 ;;; init-local.el ends here
