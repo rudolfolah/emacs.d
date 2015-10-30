@@ -1,9 +1,7 @@
 ;;; init-local --- Local settings
 ;;; Commentary:
 ;;; Code:
-(require-package 'monokai-theme)
-(require 'monokai-theme)
-(load-theme 'monokai t)
+(color-theme-sanityinc-solarized-light)
 (setq visible-bell nil)
 
 (require-package 'yasnippet)
