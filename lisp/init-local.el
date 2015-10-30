@@ -22,6 +22,9 @@
 ;; turn off undo tree, the redo mode functions in a very strange way.
 (global-undo-tree-mode -1)
 
+;; turn off electric pairing, really annoying
+(electric-pair-mode -1)
+
 
 (provide 'init-local)
 ;;; init-local.el ends here
