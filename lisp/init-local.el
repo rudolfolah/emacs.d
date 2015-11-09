@@ -46,5 +46,7 @@
   (interactive)
   (find-file "~/todo.org"))
 
+(defun rmail-after-save-hook () "Blank." t)
+
 (provide 'init-local)
 ;;; init-local.el ends here
