@@ -41,5 +41,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
 
+(defun todo ()
+  "Opens file ~/todo.org."
+  (interactive)
+  (find-file "~/todo.org"))
+
 (provide 'init-local)
 ;;; init-local.el ends here
