@@ -89,6 +89,7 @@ user interface set to `UI-TYPE' which can be \"headless\" or
   (ag (ag/dwim-at-point) directory))
 
 (global-set-key (kbd "C-c C-p") 'ag-find-symbol)
+(global-set-key (kbd "C-c C-d") 'ag-dired)
 
 (provide 'init-local)
 ;;; init-local.el ends here
