@@ -41,12 +41,43 @@
 
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
 
+(blink-cursor-mode -1)
+
 (defun todo ()
   "Opens file ~/todo.org."
   (interactive)
   (find-file "~/todo.org"))
 
 (defun rmail-after-save-hook () "Blank." t)
+
+
+(defun remote-term (new-buffer-name cmd &rest switches)
+  "Use 'ansi-term' to create `NEW-BUFFER-NAME' running `CMD'.
+
+Includes command line arguments `SWITCHES' when running the command."
+  (setq term-ansi-buffer-name (concat "*" new-buffer-name "*"))
+  (setq term-ansi-buffer-name (generate-new-buffer-name term-ansi-buffer-name))
+  (setq term-ansi-buffer-name (apply 'make-term term-ansi-buffer-name cmd nil switches))
+  (set-buffer term-ansi-buffer-name)
+  (term-mode)
+  (term-char-mode)
+  (term-set-escape-char ?\C-x)
+  (switch-to-buffer term-ansi-buffer-name))
+
+(defun vbox-startvm (uuid-or-name ui-type)
+  "Starts a VirtualBox virtual machine named `UUID-OR-NAME' with
+the user interface set to `UI-TYPE' which can be \"headless\" or
+\"gui\" or \"separate\"."
+  (shell-command (concat "VBoxManage startvm --type \""
+                         ui-type "\" \""
+                         uuid-or-name "\"")))
+
+;; CoffeeScript sentence-end definition hook
+;;(add-hook 'coffee-mode-hook
+;;          (lambda ()
+;;            (setq-local sentence-end "\\($\\| \\)[
+;; ]*")
+;;            ))
 
 (provide 'init-local)
 ;;; init-local.el ends here
