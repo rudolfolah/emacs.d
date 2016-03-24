@@ -86,7 +86,7 @@ user interface set to `UI-TYPE' which can be \"headless\" or
   "Use ag to find the symbol under point, only prompts for `DIRECTORY'."
   (interactive (list (read-directory-name
                       (concat "Find \"" (ag/dwim-at-point) "\" in: "))))
-  (ag suggested directory))
+  (ag (ag/dwim-at-point) directory))
 
 (global-set-key (kbd "C-c C-p") 'ag-find-symbol)
 
