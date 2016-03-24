@@ -81,5 +81,14 @@ user interface set to `UI-TYPE' which can be \"headless\" or
 ;; ]*")
 ;;            ))
 
+;; more convenient ag
+(defun ag-find-symbol (directory)
+  "Use ag to find the symbol under point, only prompts for `DIRECTORY'."
+  (interactive (list (read-directory-name
+                      (concat "Find \"" (ag/dwim-at-point) "\" in: "))))
+  (ag suggested directory))
+
+(global-set-key (kbd "C-c C-p") 'ag-find-symbol)
+
 (provide 'init-local)
 ;;; init-local.el ends here
