@@ -65,8 +65,10 @@ Includes command line arguments `SWITCHES' when running the command."
   (switch-to-buffer term-ansi-buffer-name))
 
 (defun vbox-startvm (uuid-or-name ui-type)
-  "Starts a VirtualBox virtual machine named `UUID-OR-NAME' with
-the user interface set to `UI-TYPE' which can be \"headless\" or
+  "Start a VirtualBox virtual machine.
+
+Start a VirtualBox virtual machine named `UUID-OR-NAME' with the
+user interface set to `UI-TYPE' which can be \"headless\" or
 \"gui\" or \"separate\"."
   (shell-command (concat "VBoxManage startvm --type \""
                          ui-type "\" \""

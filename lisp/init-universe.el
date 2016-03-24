@@ -289,14 +289,17 @@ nothing."
   (remote-term "ssh: boxoffice" "ssh" "boxoffice"))
 
 (defun vm-web ()
+  "Start the Virtualbox for web."
   (interactive)
   (vbox-startvm "universe-web" "headless"))
 
 (defun vm-multiverse ()
+  "Start the Virtualbox for multiverse."
   (interactive)
   (vbox-startvm "universe-multiverse" "headless"))
 
 (defun vm-boxoffice ()
+  "Start the Virtualbox for boxoffice."
   (interactive)
   (vbox-startvm "universe-boxoffice" "headless"))
 
@@ -310,3 +313,4 @@ nothing."
     (shell-command (concat "ssh web '" remote-command "'"))))
 
 (provide 'init-universe)
+;;; init-universe.el ends here
