@@ -22,7 +22,7 @@
   (kill-buffer "*Shell Command Output*"))
 
 (defun uni-one-sync (repo local-file-name)
-  "Run sync for exactly one file."
+  "Run sync in the repository REPO for exactly one file, LOCAL-FILE-NAME."
   (interactive)
   (let* ((local-base-dir (cadr (assoc repo uni-local-base-dirs)))
          (remote-base-dir (cadr (assoc repo uni-remote-base-dirs)))
@@ -47,9 +47,9 @@
                   (uni-one-sync 'multiverse (buffer-file-name))))))
 
 (defmacro uni-def-type-check (typename search filename extension)
-  "Defines a function with TYPENAME that checks the type of a
-buffer. If the buffer contains SEARCH and its file-name includes
-FILENAME and ends with EXTENSION, the function returns T."
+  "Defines a function with TYPENAME that check the type of a buffer.
+If the buffer contains SEARCH and its file-name includes FILENAME
+and ends with EXTENSION, the function returns T."
   `(defun ,(intern (format "uni-%s-p" typename)) (buffer)
      ,(format "Returns T if BUFFER has a %s.
 
@@ -91,27 +91,18 @@ For ruby files uses the current word and finds the class
 definition."
   (interactive)
   (let* ((buffer (current-buffer))
-         (find-func (cond ((uni-ember-model-p buffer)
-                           'uni-rails-model-file-name)
-                          ((uni-ember-controller-p buffer)
-                           'uni-ember-template-name)
-                          ((uni-ember-component-p buffer)
-                           'uni-ember-component-template-name)
-                          ((uni-ember-component-test-p buffer)
-                           'uni-ember-component-name)
-                          ((uni-ember-component-template-p buffer)
-                           'uni-ember-component-name)
-                          ((uni-rails-controller-p buffer)
-                           'uni-rails-controller-test-name)
-                          ((uni-rails-controller-test-p buffer)
-                           'uni-rails-controller-name-from-test)
-                          ((uni-rails-active-model-p buffer)
-                           'uni-rails-model-test-name)
-                          ((uni-rails-mongoid-model-p buffer)
-                           'uni-rails-model-test-name)
-                          ((uni-rails-model-test-p buffer)
-                           'uni-rails-model-name-from-test)
-                          )))
+         (find-func
+          (cond ((uni-ember-model-p buffer) 'uni-rails-model-file-name)
+                ((uni-ember-controller-p buffer) 'uni-ember-template-name)
+                ((uni-ember-component-p buffer) 'uni-ember-component-template-name)
+                ((uni-ember-component-test-p buffer) 'uni-ember-component-name)
+                ((uni-ember-component-template-p buffer) 'uni-ember-component-name)
+                ((uni-rails-controller-p buffer) 'uni-rails-controller-test-name)
+                ((uni-rails-controller-test-p buffer) 'uni-rails-controller-name-from-test)
+                ((uni-rails-active-model-p buffer) 'uni-rails-model-test-name)
+                ((uni-rails-mongoid-model-p buffer) 'uni-rails-model-test-name)
+                ((uni-rails-model-test-p buffer)'uni-rails-model-name-from-test)
+                )))
     (if find-func
         (find-file (funcall find-func (buffer-file-name buffer)))
       (error "uni-dwim-find-other-file could not recognize this file!"))))
@@ -155,10 +146,9 @@ definition."
                              "app/views"
                              "app/templates/components"
                              "tests/unit/components")))
-         (suffixes '(".rb" ".coffee" ".js" ".hbs" "-test.js" "-test.coffee"))
+         ;; order of suffixes matters!!!!!
+         (suffixes '("-test.coffee" "-test.js" ".rb" ".coffee" ".js" ".hbs"))
          (name (s-chop-suffixes suffixes (s-chop-prefixes prefixes file-name))))
-    ;; TODO: check prefixes and suffixes, they aren't currently
-    ;; matching for a component test
     (concat base-dir "/app/components/" name ".coffee")))
 
 (defun uni-ember-template-name (file-name)
