@@ -38,6 +38,7 @@ Init-local is right now loading these things:
 * monokai-theme
 * yasnippet
 * web-mode
+* org-doing
 
 In the future those should probably go into the appropriate init-*.el
 files.

@@ -91,5 +91,8 @@ user interface set to `UI-TYPE' which can be \"headless\" or
 (global-set-key (kbd "C-c C-p") 'ag-find-symbol)
 (global-set-key (kbd "C-c C-d") 'ag-dired)
 
+(require-package 'org-doing)
+(global-set-key (kbd "C-c #") 'org-doing-log)
+
 (provide 'init-local)
 ;;; init-local.el ends here
