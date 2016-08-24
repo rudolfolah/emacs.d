@@ -10,15 +10,15 @@
 
 (defvar uni-remote-base-dirs
   '(
-    (multiverse "~/local-code/multiverse/")
-    (web "~/local-code/web/")
-    (boxoffice "~/local-code/boxoffice/"))
+    (multiverse "~/Workspace/multiverse/")
+    (web "~/Workspace/web/")
+    (boxoffice "~/Workspace/boxoffice/"))
   "Remote base directories for Universe files.")
 
 (defun uni-sync ()
   "Run rsync shell command."
   (interactive)
-  (shell-command "cd ~/Workspace && sh ~/Workspace/sync.sh")
+  (shell-command "cd ~/Workspace/galaxy && bash ./_sync.sh")
   (kill-buffer "*Shell Command Output*"))
 
 (defun uni-one-sync (repo local-file-name)
@@ -26,18 +26,19 @@
   (interactive)
   (let* ((local-base-dir (cadr (assoc repo uni-local-base-dirs)))
          (remote-base-dir (cadr (assoc repo uni-remote-base-dirs)))
-         (remote-file-name (concat "/" (symbol-name repo) ":"
+         (host "galaxy") ; used to be match the repo name: (symbol-name repo)
+         (remote-file-name (concat "/" host ":"
                                    (s-replace local-base-dir remote-base-dir local-file-name))))
     (message "remote: %s" remote-file-name)
     (copy-file local-file-name remote-file-name t)))
 
-(add-hook 'after-save-hook
-          (lambda ()
-            (if (or (s-starts-with? "/Users/rudolfolah/Workspace/web" (buffer-file-name))
-                    (s-starts-with? "/Users/rudolfolah/Workspace/boxoffice" (buffer-file-name)))
-                (progn
-                  (message "Syncing universe repos...")
-                  (uni-sync)))))
+;; (add-hook 'after-save-hook
+;;           (lambda ()
+;;             (if (or (s-starts-with? "/Users/rudolfolah/Workspace/web" (buffer-file-name))
+;;                     (s-starts-with? "/Users/rudolfolah/Workspace/boxoffice" (buffer-file-name)))
+;;                 (progn
+;;                   (message "Syncing universe repos...")
+;;                   (uni-sync)))))
 
 (add-hook 'after-save-hook
           (lambda ()
@@ -45,6 +46,20 @@
                 (progn
                   (message "Syncing file: %s" (buffer-file-name))
                   (uni-one-sync 'multiverse (buffer-file-name))))))
+
+(add-hook 'after-save-hook
+          (lambda ()
+            (if (s-starts-with? "/Users/rudolfolah/Workspace/web" (buffer-file-name))
+                (progn
+                  (message "Syncing file: %s" (buffer-file-name))
+                  (uni-one-sync 'web (buffer-file-name))))))
+
+(add-hook 'after-save-hook
+          (lambda ()
+            (if (s-starts-with? "/Users/rudolfolah/Workspace/boxoffice" (buffer-file-name))
+                (progn
+                  (message "Syncing file: %s" (buffer-file-name))
+                  (uni-one-sync 'boxoffice (buffer-file-name))))))
 
 (defmacro uni-def-type-check (typename search filename extension)
   "Defines a function with TYPENAME that check the type of a buffer.
