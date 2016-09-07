@@ -18,7 +18,7 @@
 (defun uni-sync ()
   "Run rsync shell command."
   (interactive)
-  (shell-command "cd ~/Workspace/galaxy && bash ./_sync.sh")
+  (shell-command "cd ~/Workspace/galaxy && bash time ./_sync.sh")
   (kill-buffer "*Shell Command Output*"))
 
 (defun uni-one-sync (repo local-file-name)
