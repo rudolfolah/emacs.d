@@ -71,5 +71,11 @@ ignored: use `custom-enabled-themes' instead."
   (interactive)
   (color-theme-sanityinc-solarized-dark))
 
+(let ((theme-dir "~/Code/emacs-doom-theme"))
+  (when (file-exists-p theme-dir)
+    (dolist (file '("doom" "doom-one-theme" "doom-dark-theme"))
+      (load-file (concat theme-dir "/" file ".el")))
+    (setq custom-enabled-themes '("doom"))))
+
 
 (provide 'init-themes)
