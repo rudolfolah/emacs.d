@@ -29,5 +29,7 @@ This is helpful for writeroom-mode, in particular."
           'sanityinc/maybe-adjust-visual-fill-column)
 
 
+;;; Default font size
+(set-frame-font "Inconsolata 14" nil t)
 
 (provide 'init-fonts)
