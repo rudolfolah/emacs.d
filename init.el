@@ -143,6 +143,7 @@
 ;; Allow users to provide optional "init-*" files containing personal settings
 ;; for companies and projects.
 ;;----------------------------------------------------------------------------
+;; TODO: add init-* for companies/projects
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
