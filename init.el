@@ -143,7 +143,6 @@
 ;; Allow users to provide optional "init-*" files containing personal settings
 ;; for companies and projects.
 ;;----------------------------------------------------------------------------
-(require 'init-universe nil t)
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
