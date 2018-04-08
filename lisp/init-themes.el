@@ -45,7 +45,7 @@ ignored: use `custom-enabled-themes' instead."
 ;;------------------------------------------------------------------------------
 
 ;; If you don't customize it, this is the theme you get.
-(setq-default custom-enabled-themes '(sanityinc-solarized-light))
+(setq-default custom-enabled-themes '(sanityinc-solarized-dark))
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
@@ -70,12 +70,5 @@ ignored: use `custom-enabled-themes' instead."
   "Activate a dark color theme."
   (interactive)
   (color-theme-sanityinc-solarized-dark))
-
-(let ((theme-dir "~/Code/emacs-doom-theme"))
-  (when (file-exists-p theme-dir)
-    (dolist (file '("doom" "doom-one-theme" "doom-dark-theme"))
-      (load-file (concat theme-dir "/" file ".el")))
-    (setq custom-enabled-themes '("doom"))))
-
 
 (provide 'init-themes)

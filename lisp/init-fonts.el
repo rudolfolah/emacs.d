@@ -30,6 +30,13 @@ This is helpful for writeroom-mode, in particular."
 
 
 ;;; Default font size
-(set-frame-font "Inconsolata 14" nil t)
+(defun set-default-font-size ()
+  (interactive)
+  (set-frame-font "Inconsolata 16" nil t))
+(set-default-font-size)
+;;; Screencast font size
+(defun set-screencast-font-size ()
+  (interactive)
+  (set-frame-font "Inconsolata 24" nil t))
 
 (provide 'init-fonts)
