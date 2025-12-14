@@ -29,14 +29,25 @@ This is helpful for writeroom-mode, in particular."
           'sanityinc/maybe-adjust-visual-fill-column)
 
 
+;;; Font choices
+(defvar my-preferred-fonts '("Inconsolata" "Hack" "Menlo" "Monaco" "Courier New") "Fonts in order of preference")
+
+(defun get-first-existing-font ()
+  "Find the first available font from `my-preferred-fonts`."
+  (catch 'found
+    (dolist (font my-preferred-fonts)
+      (when (find-font (font-spec :name font))
+	(throw 'found font)))
+    "Monospace"))
+
 ;;; Default font size
 (defun set-default-font-size ()
   (interactive)
-  (set-frame-font "Inconsolata 16" nil t))
+  (set-frame-font (format "%s 16" (get-first-existing-font)) nil t))
 (set-default-font-size)
 ;;; Screencast font size
 (defun set-screencast-font-size ()
   (interactive)
-  (set-frame-font "Inconsolata 24" nil t))
+  (set-frame-font (format "%s 24" (get-first-existing-font)) nil t))
 
 (provide 'init-fonts)
