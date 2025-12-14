@@ -74,4 +74,14 @@ ignored: use `custom-enabled-themes' instead."
   (interactive)
   (color-theme-sanityinc-solarized-dark))
 
+(defun apply-system-theme ()
+  "Apply the 'light' or 'dark' theme based on the macOS system setting."
+  (interactive)
+  (when (eq system-type 'darwin)
+    (if (equal 0 (call-process "defaults" nil nil nil "read" "-g" "AppleInterfaceStyle"))
+        (dark)
+      (light))))
+
+(add-hook 'after-init-hook 'apply-system-theme)
+
 (provide 'init-themes)
