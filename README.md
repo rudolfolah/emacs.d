@@ -117,6 +117,7 @@ You might also want to check out `emacs-starter-kit` and `prelude`.
 [Report issues for the customized repo](https://github.com/rudolfolah/emacs.d/issues)
 
 - Rudolf
+
 [![](http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png)](https://www.linkedin.com/in/rolah/)
 
 [rudolfolah.com](https://rudolfolah.com/)
