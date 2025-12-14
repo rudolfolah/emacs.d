@@ -14,18 +14,13 @@ config adds improved defaults and extended support for the following:
 * Ruby / Ruby on Rails
 * CSS / LESS / SASS / SCSS
 * HAML / Markdown / Textile / ERB
-* Clojure (with Cider and nRepl)
 * Javascript / Coffeescript
 * Python
-* PHP
-* Haskell
-* Erlang
 * Common Lisp (with Slime)
-* EmberJS (with YASnippets)
 
 In particular, there's a nice config for *tab autocompletion*, and
-`flycheck` is used to immediately highlight syntax errors in Ruby, HAML,
-Python, Javascript, PHP and a number of other languages.
+`flycheck` is used to immediately highlight syntax errors in Ruby,
+HAML, Python, Javascript, and a number of other languages.
 
 Includes [projectile](https://github.com/bbatsov/projectile) for easy
 project navigation using find-file. It is enabled *globally*. Check
