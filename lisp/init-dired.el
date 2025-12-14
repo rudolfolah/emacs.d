@@ -1,4 +1,4 @@
-(require-package 'dired+)
+;; (require-package 'dired+)
 (require-package 'dired-sort)
 
 (setq-default diredp-hide-details-initially-flag nil
@@ -9,7 +9,7 @@
   (when gls (setq insert-directory-program gls)))
 
 (after-load 'dired
-  (require 'dired+)
+  ;; (require 'dired+)
   (require 'dired-sort)
   (when (fboundp 'global-dired-hide-details-mode)
     (global-dired-hide-details-mode -1))
