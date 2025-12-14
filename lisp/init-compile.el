@@ -22,32 +22,30 @@
 (defvar sanityinc/last-compilation-buffer nil
   "The last buffer in which compilation took place.")
 
-(after-load 'compile
-  (defadvice compilation-start (after sanityinc/save-compilation-buffer activate)
+(with-eval-after-load 'compile
+  (define-advice compilation-start (:after (&rest _args) sanityinc/save-compilation-buffer)
     "Save the compilation buffer to find it later."
     (setq sanityinc/last-compilation-buffer next-error-last-buffer))
 
-  (defadvice recompile (around sanityinc/find-prev-compilation (&optional edit-command) activate)
+  (define-advice recompile (:around (orig-fun &optional edit-command) sanityinc/find-prev-compilation)
     "Find the previous compilation buffer, if present, and recompile there."
     (if (and (null edit-command)
              (not (derived-mode-p 'compilation-mode))
              sanityinc/last-compilation-buffer
              (buffer-live-p (get-buffer sanityinc/last-compilation-buffer)))
         (with-current-buffer sanityinc/last-compilation-buffer
-          ad-do-it)
-      ad-do-it)))
+          (funcall orig-fun edit-command))
+      (funcall orig-fun edit-command))))
 
 (global-set-key [f6] 'recompile)
 
-(defadvice shell-command-on-region
-    (after sanityinc/shell-command-in-view-mode
-           (start end command &optional output-buffer replace error-buffer display-error-buffer)
-           activate)
+(define-advice shell-command-on-region (:after (_start _end _command &optional output-buffer &rest _args) sanityinc/shell-command-in-view-mode)
   "Put \"*Shell Command Output*\" buffers into view-mode."
   (unless output-buffer
-    (with-current-buffer "*Shell Command Output*"
-      (view-mode 1))))
-
+    (let ((buf (get-buffer "*Shell Command Output*")))
+      (when buf
+        (with-current-buffer buf
+          (view-mode 1))))))
 
 (after-load 'compile
   (require 'ansi-color)

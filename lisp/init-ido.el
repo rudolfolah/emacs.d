@@ -6,7 +6,7 @@
 (setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-virtual-buffers nil)
 
-(when (maybe-require-package 'ido-ubiquitous)
+(when (maybe-require-package 'ido-completing-read+)
   (ido-ubiquitous-mode t))
 
 ;; Use smex to handle M-x

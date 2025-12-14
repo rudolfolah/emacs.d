@@ -26,7 +26,7 @@
 (after-load 'magit
   (fullframe magit-status magit-mode-quit-window))
 
-(when (maybe-require-package 'git-commit)
+(with-eval-after-load 'git-commit
   (add-hook 'git-commit-mode-hook 'goto-address-mode))
 
 

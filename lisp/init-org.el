@@ -53,7 +53,9 @@
 This enables or modifies a number of settings so that the
 experience of editing prose is a little more like that of a
 typical word processor."
-  nil " Prose" nil
+  :init-value nil
+  :lighter " Prose"
+  :keymap nil
   (if prose-mode
       (progn
         (setq truncate-lines nil)

@@ -96,11 +96,12 @@
 (add-hook 'org-mode-hook 'highlight-symbol-nav-mode)
 (after-load 'highlight-symbol
   (diminish 'highlight-symbol-mode)
-  (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
+  (defun sanityinc/maybe-suppress-highlight-symbol (orig-fun &rest args)
     "Suppress symbol highlighting while isearching."
     (unless (or isearch-mode
                 (and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
-      ad-do-it)))
+      (apply orig-fun args)))
+  (advice-add 'highlight-symbol-temp-highlight :around #'sanityinc/maybe-suppress-highlight-symbol))
 
 ;;----------------------------------------------------------------------------
 ;; Zap *up* to char is a handy pair for zap-to-char
@@ -195,25 +196,29 @@
     (and (boundp 'fci-mode) fci-mode))
 
   (defvar sanityinc/fci-mode-suppressed nil)
-  (defadvice popup-create (before suppress-fci-mode activate)
+  (defun sanityinc/suppress-fci-mode (&rest args)
     "Suspend fci-mode while popups are visible"
     (let ((fci-enabled (sanityinc/fci-enabled-p)))
       (when fci-enabled
         (set (make-local-variable 'sanityinc/fci-mode-suppressed) fci-enabled)
         (turn-off-fci-mode))))
-  (defadvice popup-delete (after restore-fci-mode activate)
+  (advice-add 'popup-create :before #'sanityinc/suppress-fci-mode)
+
+  (defun sanityinc/restore-fci-mode (&rest args)
     "Restore fci-mode when all popups have closed"
     (when (and sanityinc/fci-mode-suppressed
                (null popup-instances))
       (setq sanityinc/fci-mode-suppressed nil)
       (turn-on-fci-mode)))
+  (advice-add 'popup-delete :after #'sanityinc/restore-fci-mode)
 
   ;; Regenerate fci-mode line images after switching themes
-  (defadvice enable-theme (after recompute-fci-face activate)
+  (defun sanityinc/recompute-fci-face (&rest args)
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
         (when (sanityinc/fci-enabled-p)
-          (turn-on-fci-mode))))))
+          (turn-on-fci-mode)))))
+  (advice-add 'enable-theme :after #'sanityinc/recompute-fci-face))
 
 ;;----------------------------------------------------------------------------
 ;; Fix backward-up-list to understand quotes, see http://bit.ly/h7mdIL
@@ -242,18 +247,22 @@
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
   (let ((flagvar (intern (format "%s-was-active-before-cua-rectangle" mode-name)))
-        (advice-name (intern (format "suspend-%s" mode-name))))
+        (activate-advice-name (intern (format "suspend-%s-on-cua-activate" mode-name)))
+        (deactivate-advice-name (intern (format "restore-%s-on-cua-deactivate" mode-name))))
     (eval-after-load 'cua-rect
       `(progn
          (defvar ,flagvar nil)
          (make-variable-buffer-local ',flagvar)
-         (defadvice cua--activate-rectangle (after ,advice-name activate)
+         (defun ,activate-advice-name (&rest args)
            (setq ,flagvar (and (boundp ',mode-name) ,mode-name))
            (when ,flagvar
              (,mode-name 0)))
-         (defadvice cua--deactivate-rectangle (after ,advice-name activate)
+         (advice-add 'cua--activate-rectangle :after #',activate-advice-name)
+
+         (defun ,deactivate-advice-name (&rest args)
            (when ,flagvar
-             (,mode-name 1)))))))
+             (,mode-name 1)))
+         (advice-add 'cua--deactivate-rectangle :after #',deactivate-advice-name)))))
 
 (suspend-mode-during-cua-rect-selection 'whole-line-or-region-mode)
 

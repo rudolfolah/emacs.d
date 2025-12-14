@@ -5,7 +5,7 @@
 (require-package 'js-comint)
 
 (defcustom preferred-javascript-mode
-  (first (remove-if-not #'fboundp '(js2-mode js-mode)))
+  (car (cl-remove-if-not #'fboundp '(js2-mode js-mode)))
   "Javascript mode to use for .js files."
   :type 'symbol
   :group 'programming
@@ -15,9 +15,9 @@
 
 ;; Need to first remove from list if present, since elpa adds entries too, which
 ;; may be in an arbitrary order
-(eval-when-compile (require 'cl))
+(eval-when-compile (require 'cl-lib))
 (setq auto-mode-alist (cons `("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
-                            (loop for entry in auto-mode-alist
+                            (cl-loop for entry in auto-mode-alist
                                   unless (eq preferred-javascript-mode (cdr entry))
                                   collect entry)))
 
@@ -84,7 +84,9 @@
 
 (define-minor-mode inferior-js-keys-mode
   "Bindings for communicating with an inferior js interpreter."
-  nil " InfJS" inferior-js-minor-mode-map)
+  :init-value nil
+  :lighter " InfJS"
+  :keymap inferior-js-minor-mode-map)
 
 (dolist (hook '(js2-mode-hook js-mode-hook))
   (add-hook hook 'inferior-js-keys-mode))
