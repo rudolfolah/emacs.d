@@ -2,12 +2,8 @@
 
 (defun sanityinc/dash-installed-p ()
   "Return t if Dash is installed on this machine, or nil otherwise."
-  (let ((lsregister "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister"))
-    (and (file-executable-p lsregister)
-         (not (string-equal
-               ""
-               (shell-command-to-string
-                (concat lsregister " -dump|grep com.kapeli.dash")))))))
+  (or (file-exists-p "/Applications/Dash.app")
+      (file-exists-p (expand-file-name "~/Applications/Dash.app"))))
 
 (when (and *is-a-mac* (not (package-installed-p 'dash-at-point)))
   (message "Checking whether Dash is installed")
