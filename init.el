@@ -44,7 +44,6 @@
 ;;----------------------------------------------------------------------------
 
 (require-package 'wgrep)
-(require-package 'project-local-variables)
 (require-package 'diminish)
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
