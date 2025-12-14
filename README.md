@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/purcell/emacs.d.png?branch=master)](https://travis-ci.org/purcell/emacs.d)
+# A reasonable Emacs config (customized)
 
-# A reasonable Emacs config
+**This is [an emacs configuration from purcell](https://github.com/purcell/emacs.d) that's been customized by [rudolfolah](https://github.com/rudolfolah).**
 
 This is my emacs configuration tree, continually used and tweaked
 since 2000, and it may be a good starting point for other Emacs
@@ -64,7 +64,7 @@ To install, clone this repo to `~/.emacs.d`, i.e. ensure that the
 `init.el` contained in this repo ends up at `~/.emacs.d/init.el`:
 
 ```
-git clone https://github.com/purcell/emacs.d.git ~/.emacs.d
+git clone https://github.com/rudolfolah/emacs.d.git ~/.emacs.d
 ```
 
 Upon starting up Emacs for the first time, further third-party
@@ -113,16 +113,23 @@ You might also want to check out `emacs-starter-kit` and `prelude`.
 
 ## Support / issues
 
+### Customized Fork
+[Report issues for the customized repo](https://github.com/rudolfolah/emacs.d/issues)
+
+- Rudolf
+[![](http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png)](https://www.linkedin.com/in/rolah/)
+
+[rudolfolah.com](https://rudolfolah.com/)
+
+[@rudolf_olah](https://twitter.com/rudolf_olah)
+
+### Original Repo
 If you hit any problems, please first ensure that you are using the latest version
 of this code, and that you have updated your packages to the most recent available
 versions (see "Updates" above). If you still experience problems, go ahead and
 [file an issue on the github project](https://github.com/purcell/emacs.d).
 
 -Steve Purcell
-
-<hr>
-
-[![](http://api.coderwall.com/purcell/endorsecount.png)](http://coderwall.com/purcell)
 
 [![](http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png)](http://uk.linkedin.com/in/stevepurcell)
 
