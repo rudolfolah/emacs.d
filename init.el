@@ -46,7 +46,6 @@
 (require-package 'wgrep)
 (require-package 'diminish)
 (require-package 'scratch)
-(require-package 'mwe-log-commands)
 
 (require 'init-frame-hooks)
 (require 'init-xterm)
