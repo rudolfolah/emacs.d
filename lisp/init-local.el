@@ -94,5 +94,24 @@ user interface set to `UI-TYPE' which can be \"headless\" or
 (require-package 'org-doing)
 (global-set-key (kbd "C-c #") 'org-doing-log)
 
+;; Set TERM to xterm-256color globally for ansi-term to help with CLI rendering
+(setq term-term-name "xterm-256color")
+
+;; Fix ansi-term colors for light themes
+(defun fix-ansi-term-colors ()
+  "Update ansi-term colors for better visibility on light backgrounds."
+  (when (eq (frame-parameter nil 'background-mode) 'light)
+    (set-face-attribute 'term-color-black nil :foreground "#555555")
+    (set-face-attribute 'term-color-blue    nil :foreground "#0000aa")
+    (set-face-attribute 'term-color-cyan    nil :foreground "#008b8b")
+    (set-face-attribute 'term-color-green   nil :foreground "#006400")
+    (set-face-attribute 'term-color-magenta nil :foreground "#800080")
+    (set-face-attribute 'term-color-red     nil :foreground "#cc0000")
+    (set-face-attribute 'term-color-white nil :foreground "#1a1a1a")
+    (set-face-attribute 'term-color-yellow  nil :foreground "#a05a00")
+    ))
+
+(add-hook 'term-mode-hook 'fix-ansi-term-colors)
+
 (provide 'init-local)
 ;;; init-local.el ends here
