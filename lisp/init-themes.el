@@ -47,15 +47,12 @@ ignored: use `custom-enabled-themes' instead."
 ;; If you don't customize it, this is the theme you get.
 (setq-default custom-enabled-themes '(sanityinc-solarized-dark))
 
-;; Mark the default theme as safe to load
-(setq custom-safe-themes (append custom-safe-themes '(sanityinc-solarized-dark)))
-
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
   "Forcibly load the themes listed in `custom-enabled-themes'."
   (dolist (theme custom-enabled-themes)
     (unless (custom-theme-p theme)
-      (load-theme theme)))
+      (load-theme theme t)))
   (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
 
 (add-hook 'after-init-hook 'reapply-themes)
@@ -67,12 +64,12 @@ ignored: use `custom-enabled-themes' instead."
 (defun light ()
   "Activate a light color theme."
   (interactive)
-  (color-theme-sanityinc-solarized-light))
+  (load-theme 'sanityinc-solarized-light t))
 
 (defun dark ()
   "Activate a dark color theme."
   (interactive)
-  (color-theme-sanityinc-solarized-dark))
+  (load-theme 'sanityinc-solarized-dark t))
 
 (defun apply-system-theme ()
   "Apply the 'light' or 'dark' theme based on the macOS system setting."
