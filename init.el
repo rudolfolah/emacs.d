@@ -82,6 +82,7 @@
 (require 'init-html)
 (require 'init-javascript)
 (require 'init-markdown)
+(require 'init-nushell)
 (require 'init-nxml)
 (require 'init-org)
 (require 'init-python-mode)
