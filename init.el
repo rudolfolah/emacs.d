@@ -88,6 +88,7 @@
 (require 'init-python-mode)
 (require 'init-rails)
 (require 'init-ruby-mode)
+(require 'init-rust-mode)
 (require 'init-sql)
 (require 'init-textile)
 
