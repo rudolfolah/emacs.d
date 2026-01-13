@@ -43,3 +43,4 @@ site-lisp/package/
 projectile-bookmarks.eld
 /projectile.cache
 startup.log
+/transient
