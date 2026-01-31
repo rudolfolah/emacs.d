@@ -16,6 +16,7 @@ config adds improved defaults and extended support for the following:
 * HAML / Markdown / Textile / ERB
 * Javascript / Coffeescript
 * Python
+* Terraform
 * Common Lisp (with Slime)
 
 In particular, there's a nice config for *tab autocompletion*, and

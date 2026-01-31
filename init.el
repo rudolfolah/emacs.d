@@ -89,6 +89,7 @@
 (require 'init-rails)
 (require 'init-ruby-mode)
 (require 'init-rust-mode)
+(require 'init-terraform)
 (require 'init-sql)
 (require 'init-textile)
 
