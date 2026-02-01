@@ -10,6 +10,32 @@
       '("~/snippets"))
 (yas-global-mode t)
 
+;; To add more snippets, create files in the directory specified above (~/snippets).
+;; You should create subdirectories for each major mode, e.g. ~/snippets/rust-mode/.
+;;
+;; Example: Rust trait snippet
+;; File: ~/snippets/rust-mode/trait
+;; Content:
+;; # -*- mode: snippet -*-
+;; # name: trait
+;; # key: trait
+;; # --
+;; trait ${1:Name} {
+;;     $0
+;; }
+;;
+;; Example: Rust struct snippet
+;; File: ~/snippets/rust-mode/struct
+;; Content:
+;; # -*- mode: snippet -*-
+;; # name: struct
+;; # key: struct
+;; # --
+;; struct ${1:Name} {
+;;     ${2:field}: ${3:Type},
+;;     $0
+;; }
+
 (require-package 'web-mode)
 (require 'web-mode)
 (setq
