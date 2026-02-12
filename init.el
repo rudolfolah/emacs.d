@@ -81,6 +81,8 @@
 (require 'init-haml)
 (require 'init-html)
 (require 'init-javascript)
+(require 'init-typescript)
+(require 'init-lsp)
 (require 'init-markdown)
 (require 'init-nushell)
 (require 'init-nxml)

@@ -53,7 +53,15 @@ re-downloaded in order to locate PACKAGE."
   (if (package-installed-p package min-version)
       t
     (if (or (assoc package package-archive-contents) no-refresh)
-        (package-install package)
+        (condition-case err
+            (package-install package)
+          (error
+           (if no-refresh
+               (signal (car err) (cdr err))
+             (progn
+               (message "Install failed for %s, refreshing package list: %S" package err)
+               (package-refresh-contents)
+               (require-package package min-version t)))))
       (progn
         (package-refresh-contents)
         (require-package package min-version t)))))

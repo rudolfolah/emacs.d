@@ -16,10 +16,14 @@
 ;; Need to first remove from list if present, since elpa adds entries too, which
 ;; may be in an arbitrary order
 (eval-when-compile (require 'cl-lib))
-(setq auto-mode-alist (cons `("\\.\\(js\\|es6\\)\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
+(setq auto-mode-alist (cons `("\\.\\(js\\|es6\\|jsx\\)\\(\\.erb\\)?\\'" . ,preferred-javascript-mode)
                             (cl-loop for entry in auto-mode-alist
                                   unless (eq preferred-javascript-mode (cdr entry))
                                   collect entry)))
+
+(when (maybe-require-package 'rjsx-mode)
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+  (add-hook 'rjsx-mode-hook 'lsp-deferred))
 
 
 ;; js2-mode
