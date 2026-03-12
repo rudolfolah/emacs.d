@@ -31,10 +31,10 @@ to enable it for select modes.
 **Check [init-local.el](lisp/init-local.el) for additional local settings!**
 
 Init-local is right now loading these things:
-* monokai-theme
-* yasnippet
-* web-mode
-* org-doing
+* [solarized theme](https://github.com/purcell/color-theme-sanityinc-solarized)
+* [yasnippet](https://github.com/joaotavora/yasnippet)
+* [web-mode](https://web-mode.org/)
+* [org-doing](https://github.com/rudolfolah/org-doing)
 
 In the future those should probably go into the appropriate init-*.el
 files.
