@@ -25,13 +25,14 @@
 (ipretty-mode 1)
 
 
-(defadvice pp-display-expression (after sanityinc/make-read-only (expression out-buffer-name) activate)
+(defun pp-display-expression (orig-func &rest args)
   "Enable `view-mode' in the output buffer - if any - so it can be closed with `\"q\"."
   (when (get-buffer out-buffer-name)
     (with-current-buffer out-buffer-name
       (view-mode 1))))
+(advice-add 'pp-display-expression :after #'sanityinc/make-read-only)
 
-
+
 
 (defun sanityinc/maybe-set-bundled-elisp-readonly ()
   "If this elisp appears to be part of Emacs, then disallow editing."
