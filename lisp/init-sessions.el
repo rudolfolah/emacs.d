@@ -34,7 +34,22 @@
 
 (setq session-save-file (expand-file-name ".session" user-emacs-directory))
 (setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
-(add-hook 'after-init-hook 'session-initialize)
+(defun sanityinc/session-initialize-without-file-warnings ()
+  "Load session state without reporting generated-file warnings."
+  (add-to-list 'warning-suppress-types '(files))
+  (session-initialize))
+
+(add-hook 'after-init-hook
+          #'sanityinc/session-initialize-without-file-warnings)
+
+(defun sanityinc/session-add-lexical-binding-cookie ()
+  "Add a lexical-binding cookie to the generated session file."
+  (goto-char (point-min))
+  (unless (looking-at-p ";;; -*- lexical-binding:")
+    (insert ";;; -*- lexical-binding: t -*-\n")))
+
+(add-hook 'session-before-save-hook
+          #'sanityinc/session-add-lexical-binding-cookie)
 
 ;; save a bunch of variables to the desktop file
 ;; for lists specify the len of the maximal saved data also
