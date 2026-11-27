@@ -48,6 +48,7 @@
                 Info-mode-hook
                 eww-mode-hook
                 term-mode-hook
+                eat-mode-hook
                 comint-mode-hook
                 compilation-mode-hook
                 twittering-mode-hook

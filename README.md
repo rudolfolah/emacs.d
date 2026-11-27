@@ -75,6 +75,11 @@ possible, which might confuse you when trying to open files using
 regular `find-file` prompt. (You might want to customize the
 `ido-show-dot-for-dired` variable if this is an issue for you.)
 
+## Eat terminal
+
+Eat is tuned for smoother redraws and working Backspace in macOS `zsh`.
+Open a fresh Eat session after updating.
+
 ## Updates
 
 Update the config with `git pull`. You'll probably also want/need to update
