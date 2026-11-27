@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;; Support for the http://kapeli.com/dash documentation browser
 
 (defun sanityinc/dash-installed-p ()

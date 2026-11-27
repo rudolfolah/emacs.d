@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (when (maybe-require-package 'flycheck)
   (add-hook 'after-init-hook 'global-flycheck-mode)
 

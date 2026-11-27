@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;;; Character sets
 
 (defcustom sanityinc/force-default-font-for-symbols nil

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;; (require-package 'dired+)
 ;; (require-package 'dired-sort)
 

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'projectile)
 (require-package 'projectile-rails)
 (require-package 'ag)

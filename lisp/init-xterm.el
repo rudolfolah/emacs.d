@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require 'init-frame-hooks)
 
 (defun fix-up-xterm-control-arrows ()

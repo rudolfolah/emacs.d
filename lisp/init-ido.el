@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;; Use C-f during file selection to switch to regular find-file
 (ido-mode 'buffers)
 (ido-everywhere -1)

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (when (< emacs-major-version 24)
   (require-package 'color-theme))
 

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;;; Basic ruby setup
 (require-package 'ruby-mode)
 (require-package 'ruby-hash-syntax)

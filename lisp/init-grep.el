@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (setq-default grep-highlight-matches t
               grep-scroll-output t)
 

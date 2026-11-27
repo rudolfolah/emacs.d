@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (setq-default compilation-scroll-output t)
 
 (require-package 'alert)

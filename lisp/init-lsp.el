@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'lsp-mode)
 (require-package 'lsp-ui)
 

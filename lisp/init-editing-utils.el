@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'unfill)
 
 (when (fboundp 'electric-pair-mode)
