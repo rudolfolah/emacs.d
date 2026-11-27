@@ -75,6 +75,20 @@ possible, which might confuse you when trying to open files using
 regular `find-file` prompt. (You might want to customize the
 `ido-show-dot-for-dired` variable if this is an issue for you.)
 
+## Eat terminal
+
+Eat buffers don't highlight trailing whitespace: terminal padding is part of
+the display, not text to clean up. Other buffers keep their usual settings.
+Eat batches output for 5 ms to reduce partial animation redraws while
+keeping key echo faster than Eat's 8 ms default.
+Eat keeps cursor shapes but disables blinking, which can flash the whole
+Emacs frame. `omp` uses its incremental repaint mode inside Eat because
+Eat 0.9.4 doesn't support synchronized terminal updates.
+
+On macOS, the config compiles Eat's terminfo with Apple's `tic` so the
+system `zsh` can redraw the prompt after Backspace. Open a new Eat session
+to pick up the corrected terminfo.
+
 ## Updates
 
 Update the config with `git pull`. You'll probably also want/need to update
