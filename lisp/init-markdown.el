@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'markdown-mode)
 
 (after-load 'whitespace-cleanup-mode

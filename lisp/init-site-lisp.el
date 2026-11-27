@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;;; Set load path
 
 (eval-when-compile (require 'cl-lib))

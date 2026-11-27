@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.

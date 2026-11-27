@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (with-suppressed-warnings (bytecomp) (require-package 'go-mode))
 
 ;; Set Go buffers to use a tab width of 4

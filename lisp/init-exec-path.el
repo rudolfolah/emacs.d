@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'exec-path-from-shell)
 
 (after-load 'exec-path-from-shell

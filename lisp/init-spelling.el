@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require 'ispell)
 
 (when (executable-find ispell-program-name)

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;;; init-local --- Local settings
 ;;; Commentary:
 ;;; Code:

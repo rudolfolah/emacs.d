@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;; Show number of matches while searching
 (when (maybe-require-package 'anzu)
   (global-anzu-mode t)

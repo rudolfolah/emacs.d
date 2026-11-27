@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (add-auto-mode
  'nxml-mode
  (concat "\\."

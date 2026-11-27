@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'tagedit)
 (after-load 'sgml-mode
   (tagedit-add-paredit-like-keybindings)

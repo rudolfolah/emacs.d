@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;; See http://bc.tech.coop/blog/070927.html
 (add-auto-mode 'lisp-mode "\\.cl\\'")
 (add-hook 'lisp-mode-hook (lambda ()

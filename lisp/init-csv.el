@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'csv-mode)
 ;; (require-package 'csv-nav)
 

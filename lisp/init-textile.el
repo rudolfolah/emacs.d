@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require-package 'textile-mode)
 
 (autoload 'textile-mode "textile-mode" "Mode for editing Textile documents" t)

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 ;; Nushell setup
 (require-package 'nushell-mode)
 

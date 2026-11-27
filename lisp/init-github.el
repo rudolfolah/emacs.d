@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil -*-
 (require 'init-git)
 
 (maybe-require-package 'yagist)
